@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "295733648101",
+    "firebase_url": "https://yo-ticket-default-rtdb.firebaseio.com",
+    "project_id": "yo-ticket",
+    "storage_bucket": "yo-ticket.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:295733648101:android:23de9ee8c0dce3b4e7520c",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_andrew"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "295733648101-lmkelst4s0c91gnrgqr3kcbq6oqsknq7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5wf7770yvYmhrRiDLB929Y-nBSphiJ_w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "295733648101-lmkelst4s0c91gnrgqr3kcbq6oqsknq7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
