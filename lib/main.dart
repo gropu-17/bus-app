@@ -205,6 +205,7 @@ class MainPage extends StatelessWidget {
                   child: const Text("GET HELP", style: TextStyle(fontSize: 15)),
                 ),
               ),
+              
               Container(
                 margin: const EdgeInsets.all(10),
                 height: 75.0,
