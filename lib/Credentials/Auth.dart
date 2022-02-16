@@ -51,7 +51,7 @@ class Authenticate extends StatelessWidget {
               providerConfigs: const [
                 EmailProviderConfiguration(),
                 // GoogleProviderConfiguration(
-                //   clientId: '...',
+                //   clientId: '.',
                 // ),
               ],
             );
