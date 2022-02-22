@@ -29,12 +29,12 @@ class About extends StatelessWidget {
                 IconButton(
                   icon: Icon(Icons.phone),
                   onPressed: () async {
-                    const String _url = 'tel:+256703377521';
+                    const String _url = 'tel:+256701508362';
                   },
                   color: Colors.green,
                 ),
                 Text(
-                  "+256703377521",
+                  "+256701508362",
                   style: TextStyle(fontSize: 20),
                 )
               ],
@@ -48,7 +48,7 @@ class About extends StatelessWidget {
                   color: Colors.green,
                 ),
                 Text(
-                  "patricklutaaya56@gmail.com",
+                  "nantezajeanne@gmail.com",
                   style: TextStyle(fontSize: 20),
                 )
               ],
