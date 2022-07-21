@@ -1,16 +1,15 @@
+import 'package:bus_application/screens/help_and_support.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_andrew/Credentials/Auth.dart';
-import 'package:flutter_application_andrew/models/tickets.dart';
-import 'package:flutter_application_andrew/screens/ticket_screen.dart';
+import 'package:bus_application/Credentials/Auth.dart';
+import 'package:bus_application/models/tickets.dart';
+import 'package:bus_application/screens/ticket_screen.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_andrew/help_scren.dart';
-import 'package:flutter_application_andrew/profile.dart';
-import 'package:flutter_application_andrew/screens/about.dart';
-import 'package:flutter_application_andrew/screens/booking.dart';
-import 'package:flutter_application_andrew/screens/payment.dart';
+import 'package:bus_application/profile.dart';
+import 'package:bus_application/screens/booking.dart';
+import 'package:bus_application/screens/payment.dart';
 import 'login/main.dart';
 import 'services.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -69,7 +68,7 @@ class HomeScreen extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: title,
-      theme: ThemeData(primarySwatch: Colors.green),
+      theme: ThemeData(primarySwatch: Colors.blue),
       home: Authenticate(),
     );
   }
@@ -81,25 +80,26 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text('Homepage'),
+          title: const Text('Home'),
           centerTitle: true,
           actions: [
             Theme(
               data: Theme.of(context).copyWith(
-                //backgroundColor: Color(),
+                backgroundColor: Color.fromARGB(255, 25, 78, 109),
                 dividerColor: Colors.white,
                 iconTheme: const IconThemeData(color: Colors.white),
                 textTheme: const TextTheme().apply(bodyColor: Colors.black),
               ),
               child: PopupMenuButton<int>(
-                color: Colors.green[100],
+                color: Color.fromARGB(255, 97, 178, 224),
                 onSelected: (item) => onSelected(context, item),
                 itemBuilder: (context) => [
                   PopupMenuItem<int>(
                     value: 0,
                     child: Row(
                       children: const [
-                        Icon(Icons.people, color: Colors.green, size: 30),
+                        Icon(Icons.people,
+                            color: Color.fromARGB(255, 9, 56, 110), size: 30),
                         SizedBox(width: 8),
                         Text(
                           'Profile',
@@ -112,7 +112,8 @@ class MainPage extends StatelessWidget {
                     value: 1,
                     child: Row(
                       children: const [
-                        Icon(Icons.help, color: Colors.green, size: 30),
+                        Icon(Icons.help,
+                            color: Color.fromARGB(255, 9, 56, 110), size: 30),
                         SizedBox(width: 8),
                         Text(
                           'Help',
@@ -127,7 +128,7 @@ class MainPage extends StatelessWidget {
                       children: const [
                         Icon(
                           Icons.logout,
-                          color: Colors.orangeAccent,
+                          color: Color.fromARGB(255, 108, 123, 189),
                           size: 30,
                         ),
                         SizedBox(
@@ -146,12 +147,12 @@ class MainPage extends StatelessWidget {
           ],
         ),
         body: Material(
-          color: Colors.green[200],
+          color: Color.fromARGB(255, 25, 78, 109),
           child: Column(children: <Widget>[
             const Padding(padding: EdgeInsets.all(15)),
             const CircleAvatar(
               radius: 95,
-              backgroundImage: AssetImage('assets/logo.jpg'),
+              backgroundImage: AssetImage('assets/logo.png'),
             ),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               const Padding(padding: EdgeInsets.fromLTRB(0, 35, 0, 15)),
@@ -161,8 +162,8 @@ class MainPage extends StatelessWidget {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       shape: const StadiumBorder(),
-                      primary: Colors.green[100],
-                      onPrimary: Colors.orange),
+                      primary: Color.fromARGB(255, 111, 218, 203),
+                      onPrimary: Colors.black),
                   onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(builder: (_) => BookingPage()),
@@ -176,8 +177,8 @@ class MainPage extends StatelessWidget {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       shape: const StadiumBorder(),
-                      primary: Colors.green[100],
-                      onPrimary: Colors.orange),
+                      primary: Color.fromARGB(255, 111, 218, 203),
+                      onPrimary: Colors.black),
                   onPressed: () {
                     Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(
@@ -196,33 +197,35 @@ class MainPage extends StatelessWidget {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       shape: const StadiumBorder(),
-                      primary: Colors.green[100],
-                      onPrimary: Colors.orange),
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => About()),
-                  ),
+                      primary: Color.fromARGB(255, 111, 218, 203),
+                      onPrimary: Colors.black),
+                  onPressed: () => Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HelpAndSupport(),
+                      ),
+                      (route) => true),
                   child: const Text("GET HELP", style: TextStyle(fontSize: 15)),
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.all(10),
-                height: 75.0,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      shape: const StadiumBorder(),
-                      primary: Colors.green[100],
-                      onPrimary: Colors.orange),
-                  onPressed: () {
-                    Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                const PaymentScreen()),
-                        (route) => true);
-                  },
-                  child: const Text("PAYMENT", style: TextStyle(fontSize: 15)),
-                ),
-              ),
+              // Container(
+              //   margin: const EdgeInsets.all(10),
+              //   height: 75.0,
+              //   child: ElevatedButton(
+              //     style: ElevatedButton.styleFrom(
+              //         shape: const StadiumBorder(),
+              //         primary: Color.fromARGB(255, 111, 218, 203),
+              //         onPrimary: Colors.black),
+              //     onPressed: () {
+              //       Navigator.of(context).pushAndRemoveUntil(
+              //           MaterialPageRoute(
+              //               builder: (BuildContext context) =>
+              //                   const PaymentScreen()),
+              //           (route) => true);
+              //     },
+              //     child: const Text("PAYMENT", style: TextStyle(fontSize: 15)),
+              //   ),
+              // ),
             ]),
           ]),
         ),
@@ -232,12 +235,12 @@ class MainPage extends StatelessWidget {
     switch (item) {
       case 0:
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => ProfilePage()),
+          MaterialPageRoute(builder: (context) => const UserProfileBody()),
         );
         break;
       case 1:
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => About()),
+          MaterialPageRoute(builder: (context) => const HelpAndSupport()),
         );
         break;
       case 2:

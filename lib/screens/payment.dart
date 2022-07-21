@@ -1,3 +1,4 @@
+import 'package:bus_application/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterwave/flutterwave.dart';
 
@@ -20,7 +21,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
       appBar: AppBar(
         title: const Text('Payment'),
         centerTitle: true,
-        backgroundColor: Colors.green,
+        backgroundColor: Color.fromARGB(255, 25, 78, 109),
       ),
       body: ListView(
         children: [
@@ -105,6 +106,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
     final response = await flutterwave.initializeForUiPayments();
     if (response != null) {
       showLoading(response.toString());
+      Future.delayed(const Duration(seconds: 3), () {
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => const HomeScreen()),
+            (Route<dynamic> route) => false);
+      });
     } else {
       showLoading("No Response!");
     }

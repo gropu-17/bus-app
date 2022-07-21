@@ -1,6 +1,7 @@
+import 'package:bus_application/screens/payment.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_search/dropdown_search.dart';
-import 'package:flutter_application_andrew/models/tickets.dart';
+import 'package:bus_application/models/tickets.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:intl/intl.dart';
@@ -40,7 +41,7 @@ class _BookingPageState extends State<BookingPage> {
   void _selectDate2() async {
     final DateTime? newDate = await showDatePicker(
       context: context,
-      initialDate: departDate.add(Duration(days: 1)),
+      initialDate: departDate.add(const Duration(days: 1)),
       firstDate: DateTime(2021, 1),
       lastDate: DateTime(2050, 7),
       helpText: 'Select a date',
@@ -53,10 +54,13 @@ class _BookingPageState extends State<BookingPage> {
   }
 
   void addData() async {
-    DatabaseReference ref = FirebaseDatabase.instance.ref("coaches/simba");
+    DatabaseReference ref = FirebaseDatabase.instance.ref("coaches/Gaaga");
+
     await ref.set({
       "no_of_seats": 38,
-      'available_routes': {"Kampala To Jinja": "80000:1200,1230,1500,1900,2100"}
+      'available_routes': {
+        "Kampala To Jinja": "80000:1200,1230,1500,1900,2100"
+      },
     });
   }
 
@@ -74,24 +78,24 @@ class _BookingPageState extends State<BookingPage> {
     services.getTrips();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('YoTicket'),
+        title: const Text('Bus-Ticket'),
         centerTitle: true,
-        backgroundColor: Colors.green,
+        backgroundColor: Color.fromARGB(255, 25, 78, 109),
       ),
       body: Container(
-        padding: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
         width: double.infinity,
         height: 370,
         child: Card(
           child: Padding(
-            padding: EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   child: DropdownSearch<String>(
-                    mode: Mode.BOTTOM_SHEET,
-                    items: [
+                    // mode: Mode.BOTTOM_SHEET,
+                    items: const [
                       "Kampala",
                       "Mbale",
                       "Jinja",
@@ -99,9 +103,9 @@ class _BookingPageState extends State<BookingPage> {
                       'Kasese',
                       'Mbarara'
                     ],
-                    label: "To",
-                    hint: "Arrival city",
-                    popupItemDisabled: (String s) => s.startsWith('I'),
+                    enabled: true,
+                    // hint: "Arrival city",
+                    // popupItemDisabled: (String s) => s.startsWith('I'),
                     onChanged: (data) {
                       setState(() {
                         toCity = data!;
@@ -110,10 +114,10 @@ class _BookingPageState extends State<BookingPage> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   child: DropdownSearch<String>(
-                    mode: Mode.BOTTOM_SHEET,
-                    items: [
+                    // mode: Mode.BOTTOM_SHEET,
+                    items: const [
                       "Kampala",
                       "Mbale",
                       "Jinja",
@@ -121,9 +125,9 @@ class _BookingPageState extends State<BookingPage> {
                       'Kasese',
                       'Mbarara'
                     ],
-                    label: "From",
-                    hint: "Departure city",
-                    popupItemDisabled: (String s) => s.startsWith('I'),
+                    // label: "From",
+                    // hint: "Departure city",
+                    // popupItemDisabled: (String s) => s.startsWith('I'),
                     onChanged: (data) {
                       setState(() {
                         fromCity = data!;
@@ -136,7 +140,7 @@ class _BookingPageState extends State<BookingPage> {
                   children: [
                     Expanded(
                       child: Container(
-                        padding: EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(5),
                         child: ElevatedButton(
                           onPressed: _selectDate,
                           child: Text(departDate.isAfter(DateTime.now())
@@ -147,7 +151,7 @@ class _BookingPageState extends State<BookingPage> {
                     ),
                     Expanded(
                         child: Container(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       child: ElevatedButton(
                         onPressed: _selectDate2,
                         child: Text(arrivalDate.isAfter(DateTime.now())
@@ -158,10 +162,10 @@ class _BookingPageState extends State<BookingPage> {
                   ],
                 ),
                 Container(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   child: DropdownSearch<String>(
-                    mode: Mode.MENU,
-                    items: [
+                    // mode: Mode.MENU,
+                    items: const [
                       "1 Ticket",
                       "2 Tickets",
                       "3 Tickets",
@@ -169,9 +173,9 @@ class _BookingPageState extends State<BookingPage> {
                       "5 Tickets",
                       "6 Tickets",
                     ],
-                    label: "No. of Tickets",
-                    hint: "Number of tickets",
-                    popupItemDisabled: (String s) => s.startsWith('I'),
+                    // label: "No. of Tickets",
+                    // hint: "Number of tickets",
+                    // popupItemDisabled: (String s) => s.startsWith('I'),
                     onChanged: (data) {
                       var tickets = data!;
                       setState(() {
@@ -183,8 +187,8 @@ class _BookingPageState extends State<BookingPage> {
                 Container(
                   width: double.infinity,
                   child: MaterialButton(
-                    padding: EdgeInsets.all(10),
-                    color: Colors.orange,
+                    padding: const EdgeInsets.all(10),
+                    color: Color.fromARGB(255, 111, 218, 203),
                     onPressed: isSearching == false
                         ? () {
                             addInfo();
@@ -204,7 +208,7 @@ class _BookingPageState extends State<BookingPage> {
                               setState(() {
                                 isSearching = true;
                               });
-                              Future.delayed(Duration(seconds: 2), () {
+                              Future.delayed(const Duration(seconds: 2), () {
                                 setState(() {
                                   isSearching = false;
                                   Navigator.push(
@@ -229,15 +233,15 @@ class _BookingPageState extends State<BookingPage> {
                           }
                         : null,
                     child: isSearching == false
-                        ? Text(
+                        ? const Text(
                             "Search",
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 24,
                               color: Colors.white,
                             ),
                           )
-                        : CircularProgressIndicator(
-                            color: Colors.orange,
+                        : const CircularProgressIndicator(
+                            color: Color.fromARGB(255, 111, 218, 203),
                           ),
                   ),
                 )
@@ -304,7 +308,7 @@ class _BusOptionsState extends State<BusOptions> {
       appBar: AppBar(
         title: Text(appbarText),
         centerTitle: true,
-        backgroundColor: Colors.green,
+        backgroundColor: Color.fromARGB(255, 25, 78, 109),
       ),
       body: bigData.length > 0
           ? ListView.builder(
@@ -319,8 +323,8 @@ class _BusOptionsState extends State<BusOptions> {
                   date: widget.busSearch["departDate"],
                 );
               })
-          : Center(
-              child: Text("There are no trips available"),
+          : const Center(
+              child: const Text("There are no trips available"),
             ),
     );
   }
@@ -347,7 +351,7 @@ class DisplayCard extends StatelessWidget {
   Widget build(BuildContext context) {
     var services = Provider.of<Trips>(context, listen: false);
     return Container(
-      padding: EdgeInsets.only(left: 5, right: 5),
+      padding: const EdgeInsets.only(left: 5, right: 5),
       height: 130,
       width: double.infinity,
       child: Card(
@@ -369,19 +373,20 @@ class DisplayCard extends StatelessWidget {
                         booked: services.booked)));
           },
           child: Container(
-            padding: EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   "${coach}",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 26),
                 ),
                 Text(
                     "Leaves at ${time} on ${DateFormat('dd-MM-yyyy').format(date)}",
-                    style: TextStyle(fontSize: 18, color: Colors.grey)),
-                Text("Price: ${price}", style: TextStyle(fontSize: 20)),
+                    style: const TextStyle(fontSize: 18, color: Colors.grey)),
+                Text("Price: ${price}", style: const TextStyle(fontSize: 20)),
               ],
             ),
           ),
@@ -447,14 +452,14 @@ class _SelectSeatState extends State<SelectSeat> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Select preffered seat(s)"),
+        title: const Text("Select preffered seat(s)"),
         centerTitle: true,
-        backgroundColor: Colors.green,
+        backgroundColor: Color.fromARGB(255, 25, 78, 109),
       ),
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: Container(
           decoration: BoxDecoration(
               border: Border.all(color: Colors.black, width: 2),
@@ -462,7 +467,7 @@ class _SelectSeatState extends State<SelectSeat> {
           child: GridView.count(
             crossAxisCount: 5,
             primary: false,
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             crossAxisSpacing: 15,
             mainAxisSpacing: 5,
             children: [
@@ -513,32 +518,33 @@ class _SeatState extends State<Seat> {
         builder: (BuildContext context) {
           return Container(
             height: 200,
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 Text(
                   'Confirm booking for ticket no ${widget.seatnumber}',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 Text(
                   'Bus: ${widget.coach}',
-                  style: TextStyle(fontSize: 20),
+                  style: const TextStyle(fontSize: 20),
                 ),
                 Text(
                   'Price: ${widget.price}',
-                  style: TextStyle(fontSize: 20),
+                  style: const TextStyle(fontSize: 20),
                 ),
                 Text(
                   'Date and time: ${DateFormat('dd-MM-yyyy').format(widget.date)} ${widget.time}',
-                  style: TextStyle(fontSize: 20),
+                  style: const TextStyle(fontSize: 20),
                 ),
                 ElevatedButton(
                   child: trying == false
                       ? const Text('Book')
-                      : CircularProgressIndicator(
-                          color: Colors.green,
+                      : const CircularProgressIndicator(
+                          color: Color.fromARGB(255, 25, 78, 109),
                         ),
                   onPressed: trying == false
                       ? () async {
@@ -546,7 +552,7 @@ class _SeatState extends State<Seat> {
                             trying = true;
                           });
 
-                          var uuid = Uuid();
+                          var uuid = const Uuid();
                           DateTime now = DateTime.now();
 
                           Map<String, Object> data = {
@@ -597,10 +603,11 @@ class _SeatState extends State<Seat> {
                             }
 
                             _showMyDialog();
-                            Future.delayed(Duration(seconds: 5), () {
+                            Future.delayed(const Duration(seconds: 5), () {
                               Navigator.of(context).pushAndRemoveUntil(
                                   MaterialPageRoute(
-                                      builder: (context) => HomeScreen()),
+                                      builder: (context) =>
+                                          const PaymentScreen()),
                                   (Route<dynamic> route) => false);
                             });
                           } else {
@@ -632,7 +639,9 @@ class _SeatState extends State<Seat> {
           '${widget.seatnumber}',
           textAlign: TextAlign.center,
         ),
-        color: widget.available == true ? Colors.green[200] : Colors.red[200],
+        color: widget.available == true
+            ? Color.fromARGB(255, 165, 203, 214)
+            : Colors.red[200],
       ),
     );
   }

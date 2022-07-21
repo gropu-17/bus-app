@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(Container(
-    color: Colors.orangeAccent,
+    color: Color.fromARGB(255, 111, 218, 203),
   ));
   runApp(
     const Signup(),
@@ -25,14 +25,14 @@ class Signup extends StatelessWidget {
     return MaterialApp(
 //theme drawer*****************************
       theme: theme.copyWith(
-        colorScheme: theme.colorScheme.copyWith(primary: Colors.green),
+        colorScheme: theme.colorScheme.copyWith(primary: Color.fromARGB(255, 25, 78, 109)),
       ),
       debugShowCheckedModeBanner: false,
 //Scffold and App bar*********************
       home: Scaffold(
         appBar: AppBar(
             centerTitle: true,
-            backgroundColor: Colors.green[200],
+            backgroundColor: Color.fromARGB(255, 111, 218, 203),
             title: const Text(
               'Sign up For An Account',
               style: TextStyle(fontSize: 30.0),
@@ -70,7 +70,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             const Padding(padding: EdgeInsets.all(10)),
             const CircleAvatar(
               radius: 40.0,
-              backgroundColor: Colors.green,
+              backgroundColor: Color.fromARGB(255, 25, 78, 109),
               // widthFactor: 1,
               //heightFactor: 1,
               child: Icon(

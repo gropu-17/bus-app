@@ -13,7 +13,7 @@ void main() => runApp(const Login());
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
 
-  static const String _title = 'Yo Ticket';
+  static const String _title = 'Bus Ticket';
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = ThemeData();
@@ -22,7 +22,7 @@ class Login extends StatelessWidget {
     return MaterialApp(
       theme: theme.copyWith(
         colorScheme: theme.colorScheme.copyWith(
-          primary: Colors.green,
+          primary: Color.fromARGB(255, 25, 78, 109),
           //  secondary: Colors.brown,
         ),
       ),
@@ -30,7 +30,7 @@ class Login extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Yo Ticket',
+            'Bus Ticket',
             style: TextStyle(fontSize: 30),
           ),
         ),
@@ -78,7 +78,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
-                  'assets/bus.jpg',
+                  'assets/logo.jpg',
                 ),
               ),
               //shape: BoxShape.circle,
@@ -119,7 +119,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             child: const Text(
               'Forgot Password',
               style: TextStyle(
-                color: Colors.green,
+                color: Color.fromARGB(255, 25, 78, 109),
               ),
             ),
           ),
@@ -160,7 +160,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     } else if (data["message"] == "Login successful") {
                       const snackBar = SnackBar(
-                        backgroundColor: Colors.green,
+                        backgroundColor: Color.fromARGB(255, 25, 78, 109),
                         content: Text(
                           'Logging you in',
                           style: TextStyle(color: Colors.white),
@@ -204,7 +204,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               TextButton(
                 child: const Text(
                   'Sign up',
-                  style: TextStyle(fontSize: 20, color: Colors.green),
+                  style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 25, 78, 109)),
                 ),
                 onPressed: () {
                   widget.controller.animateTo(2,
@@ -247,7 +247,7 @@ class _RegisterState extends State<Register> {
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
-                  'assets/bus.jpg',
+                  'assets/logo.jpg',
                 ),
               ),
               //shape: BoxShape.circle,
@@ -319,7 +319,7 @@ class _RegisterState extends State<Register> {
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     } else if (data["message"] == "Account created") {
                       const snackBar = SnackBar(
-                        backgroundColor: Colors.green,
+                        backgroundColor: Color.fromARGB(255, 25, 78, 109),
                         content: Text(
                           'Account created. Logging you in now',
                           style: TextStyle(color: Colors.white),
@@ -363,7 +363,7 @@ class _RegisterState extends State<Register> {
               TextButton(
                 child: const Text(
                   'Sign in',
-                  style: TextStyle(fontSize: 20, color: Colors.green),
+                  style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 25, 78, 109)),
                 ),
                 onPressed: () {
                   widget.controller.animateTo(0,

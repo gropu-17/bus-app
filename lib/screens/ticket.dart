@@ -42,7 +42,7 @@ class _TicketPageState extends State<TicketPage> {
       appBar: AppBar(
         title: const Text('Tickets'),
         centerTitle: true,
-        backgroundColor: Colors.green,
+        backgroundColor: Color.fromARGB(255, 25, 78, 109),
       ),
       body: Material(
         child: bigD.isNotEmpty

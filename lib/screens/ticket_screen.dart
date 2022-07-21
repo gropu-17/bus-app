@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_andrew/models/tickets.dart';
+import 'package:bus_application/models/tickets.dart';
 import 'package:hive_flutter/adapters.dart';
 
 class TicketScreen extends StatefulWidget {
@@ -16,7 +16,7 @@ class _TicketScreenState extends State<TicketScreen> {
       appBar: AppBar(
         title: const Text('Tickets'),
         centerTitle: true,
-        backgroundColor: Colors.green,
+        backgroundColor: Color.fromARGB(255, 25, 78, 109),
       ),
       body: ValueListenableBuilder(
         valueListenable: Hive.box<Tickets>('ticketBox').listenable(),

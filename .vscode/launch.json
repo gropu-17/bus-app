@@ -5,12 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "flutter_application_andrew",
+            "name": "bus_application",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "flutter_application_andrew (profile mode)",
+            "name": "bus_application (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
